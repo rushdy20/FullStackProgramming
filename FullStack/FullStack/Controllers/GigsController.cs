@@ -34,8 +34,7 @@ namespace FullStack.Controllers
             var gig = new Gig
             {
                 ArtistId = User.Identity.GetUserId(),
-                DateTime = DateTime.Parse(string.Format("{0} {1}", model.Date, model.Time)),
-
+                DateTime = model.DateTime,
                 GenreId = model.Genre,
                 Venue = model.Venue
 
