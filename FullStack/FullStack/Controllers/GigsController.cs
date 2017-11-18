@@ -1,7 +1,6 @@
 ﻿using FullStack.Models;
 using FullStack.ViewModels;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -30,11 +29,15 @@ namespace FullStack.Controllers
         [HttpPost]
         public ActionResult Create(GigFormViewModel model)
         {
-
+            if (!ModelState.IsValid)
+            {
+                model.Genres = _context.Genres.ToList();
+                return View("Create", model);
+            }
             var gig = new Gig
             {
                 ArtistId = User.Identity.GetUserId(),
-                DateTime = model.DateTime,
+                DateTime = model.GetDateTime(),
                 GenreId = model.Genre,
                 Venue = model.Venue
 
