@@ -1,7 +1,9 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using FullStack.Models;
+﻿using FullStack.Models;
 using FullStack.ViewModels;
+using Microsoft.AspNet.Identity;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace FullStack.Controllers
 {
@@ -10,8 +12,9 @@ namespace FullStack.Controllers
         private ApplicationDbContext _context;
 
         public GigsController()
-        { _context = new ApplicationDbContext();}
+        { _context = new ApplicationDbContext(); }
         // GET: Gigs
+        [Authorize]
         public ActionResult Create()
         {
 
@@ -22,5 +25,30 @@ namespace FullStack.Controllers
 
             return View(model);
         }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Create(GigFormViewModel model)
+        {
+
+            var gig = new Gig
+            {
+                ArtistId = User.Identity.GetUserId(),
+                DateTime = DateTime.Parse(string.Format("{0} {1}", model.Date, model.Time)),
+
+                GenreId = model.Genre,
+                Venue = model.Venue
+
+
+
+            };
+            _context.Gigs.Add(gig);
+            _context.SaveChanges();
+
+            return RedirectToAction("index", "Home");
+
+
+        }
     }
+
 }
