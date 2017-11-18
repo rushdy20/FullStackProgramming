@@ -20,5 +20,6 @@ namespace FullStack.Models
         public Genre Genre { get; set; }
 
 
+
     }
 }
