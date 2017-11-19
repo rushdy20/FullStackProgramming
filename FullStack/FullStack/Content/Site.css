@@ -22,3 +22,65 @@ select,
 textarea {
     max-width: 280px;
 }
+/*Bootstrap Overdies*/
+.navbar-inverse {
+    background-color: #FF4342;
+    border-color: #FF4342;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #cd2827;
+    background-color: rgba(205, 40,39, 0.55);
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+body {
+        font-size: 17px;
+}
+body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    
+}
+ .form-group {
+    margin-bottom: 20px;
+       
+}
+ .form-control {
+     font-size: 17px;
+      padding: 20px 15px;
+     -ms-border-radius: 9px;
+     border-radius: 9px;     
+ }
+ .form-control:focus {
+    border-color: #2196f3;
+    outline: 0;
+     -webkit-box-shadow: none;
+     box-shadow: none
+}
+ .btn {
+   
+     padding: 7px 20px;
+    font-size: 17px;
+     -ms-border-radius: 9px;
+     border-radius: 9px;    
+ }
+ .dropdown-menu {
+
+     font-size: 17px;
+     -ms-border-radius: 9px;
+     border-radius: 9px;
+   -webkit-box-shadow: none;
+     -ms-box-shadow: none;
+     box-shadow: none;
+ }
+ .navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+ .navbar-brand {
+    font-weight: 700;
+}
