@@ -24,7 +24,7 @@ namespace FullStack.Controllers
 
             return View(model);
         }
-
+        [ValidateAntiForgeryToken]
         [Authorize]
         [HttpPost]
         public ActionResult Create(GigFormViewModel model)
