@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FullStack.Models
+namespace FullStack.ViewModels
 {
-    public class ForgotPasswordViewModel
+    public class ForgotViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
