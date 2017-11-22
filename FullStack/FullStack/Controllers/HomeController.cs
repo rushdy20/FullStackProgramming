@@ -18,6 +18,7 @@ namespace FullStack.Controllers
         {
             var upcommingGigs = _context.Gigs
                                 .Include(g => g.Artist)
+                                .Include(g => g.Genre)
                                 .Where(g => g.DateTime > DateTime.Now && g.Artist.Email == User.Identity.Name);
 
             return View(upcommingGigs);
