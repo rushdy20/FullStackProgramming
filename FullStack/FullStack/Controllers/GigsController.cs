@@ -1,6 +1,8 @@
 ﻿using FullStack.Models;
 using FullStack.ViewModels;
 using Microsoft.AspNet.Identity;
+using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -24,6 +26,19 @@ namespace FullStack.Controllers
 
             return View(model);
         }
+        [Authorize]
+        public ActionResult Mine()
+        {
+            var userid = User.Identity.GetUserId();
+
+            var gigs = _context.Gigs.Where(g => g.ArtistId == userid && g.DateTime > DateTime.Now).Include(g => g.Genre).ToList();
+            return View(gigs);
+
+
+        }
+
+
+
         [ValidateAntiForgeryToken]
         [Authorize]
         [HttpPost]
@@ -47,7 +62,7 @@ namespace FullStack.Controllers
             _context.Gigs.Add(gig);
             _context.SaveChanges();
 
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("Mine", "Gigs");
 
 
         }
