@@ -19,6 +19,10 @@
                 <span class="artist">
                     @gig.Artist.Name
                 </span>
+                @if (gig.IsCanceled)
+                {
+                    <span class="label label-warning">Cancled</span>
+                }
                 <span class="genre">
                     @gig.Genre.Name
 

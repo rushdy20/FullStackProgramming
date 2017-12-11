@@ -209,6 +209,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\GigsController.cs" />
     <Compile Include="Controllers\AttendencesController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -253,6 +254,10 @@
     <Compile Include="Migrations\201711231958269_AddAttendance.Designer.cs">
       <DependentUpon>201711231958269_AddAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712111010008_AddIsCanceledToGig.cs" />
+    <Compile Include="Migrations\201712111010008_AddIsCanceledToGig.Designer.cs">
+      <DependentUpon>201712111010008_AddIsCanceledToGig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -289,6 +294,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -381,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711231958269_AddAttendance.resx">
       <DependentUpon>201711231958269_AddAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111010008_AddIsCanceledToGig.resx">
+      <DependentUpon>201712111010008_AddIsCanceledToGig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
