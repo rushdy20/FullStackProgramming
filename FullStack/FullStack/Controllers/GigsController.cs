@@ -59,6 +59,7 @@ namespace FullStack.Controllers
                 Venue = model.Venue
 
             };
+            var notification = Notification.GigCreated(gig);
             _context.Gigs.Add(gig);
             _context.SaveChanges();
 
@@ -95,10 +96,16 @@ namespace FullStack.Controllers
                 model.Heading = "Add a Gig";
                 return View("GigForm", model);
             }
-            var gig = _context.Gigs.Single(g => g.Id == model.Id && g.ArtistId == userid);
+            var gig = _context.Gigs
+                .Include(a => a.Attendances.Select(g => g.Attendee))
+                .Single(g => g.Id == model.Id && g.ArtistId == userid);
+
+            gig.Modify(model.GetDateTime(), model.Venue, model.Genre);
+
             gig.DateTime = model.GetDateTime();
             gig.Venue = model.Venue;
             gig.GenreId = model.Genre;
+
 
             _context.SaveChanges();
 

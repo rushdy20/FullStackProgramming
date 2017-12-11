@@ -1,6 +1,6 @@
 ﻿using FullStack.Models;
 using Microsoft.AspNet.Identity;
-using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 
@@ -20,25 +20,16 @@ namespace FullStack.Controllers.Api
         public IHttpActionResult Cancel(int id)
         {
             var userId = User.Identity.GetUserId();
-            var gigs = _context.Gigs.Single(g => g.Id == id && g.ArtistId == userId);
-            gigs.IsCanceled = true;
 
-            var notification = new Notification
-            {
-                DateTime = DateTime.Now,
-                Gig = gigs,
-                Type = NotificationType.GigCanceled
-            };
-            var attendees = _context.Attendances.Where(a => a.GigId == gigs.Id).Select(a => a.Attendee).ToList();
+            var gigs = _context.Gigs
+                .Include(i => i.Attendances.Select(a => a.Attendee))
+                .Single(g => g.Id == id && g.ArtistId == userId);
 
-            foreach (var userNotification in attendees.Select(attendee => new UserNotification
-            {
-                Notification = notification,
-                User = attendee
-            }))
-            {
-                _context.UserNotifications.Add(userNotification);
-            }
+            if (gigs.IsCanceled)
+                return NotFound();
+
+            gigs.Cancel();
+
             _context.SaveChanges();
             return Ok();
         }

@@ -22,8 +22,8 @@ namespace FullStack.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Attendance>().HasRequired(a => a.Gig).WithMany().WillCascadeOnDelete(false);
-            modelBuilder.Entity<UserNotification>().HasRequired(a => a.User).WithMany().WillCascadeOnDelete(false);
+            modelBuilder.Entity<Attendance>().HasRequired(a => a.Gig).WithMany(g => g.Attendances).WillCascadeOnDelete(false);
+            modelBuilder.Entity<UserNotification>().HasRequired(a => a.User).WithMany(g => g.UserNotifications).WillCascadeOnDelete(false);
             base.OnModelCreating(modelBuilder);
         }
     }
