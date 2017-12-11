@@ -51,9 +51,9 @@ body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
  .form-control {
      font-size: 17px;
-      padding: 20px 15px;
      -ms-border-radius: 9px;
-     border-radius: 9px;     
+     border-radius: 9px;  
+     height: 44px   
  }
  .form-control:focus {
     border-color: #2196f3;
@@ -133,3 +133,10 @@ body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
      font-size: 15px
      
  }
+  .gigs > li .action {
+      font-size: 15px;
+      display: none;
+  }
+    .gigs > li:hover .action{
+        display: block;
+    }
